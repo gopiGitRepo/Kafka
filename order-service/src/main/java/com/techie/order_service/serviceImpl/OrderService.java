@@ -1,9 +1,8 @@
 package com.techie.order_service.serviceImpl;
 
-
-
 import com.techie.order_service.entity.Order;
 import com.techie.order_service.repo.OrderRepository;
+import com.techie.order_service.requestResponse.OrderRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +16,11 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order createOrder(Order order) {
-        return orderRepository.save(order);
+    public Order createOrder(OrderRequest order) {
+        Order newOrder = new Order();
+        newOrder.setProductId(order.getProductId());
+        newOrder.setQuantity(order.getQuantity());
+        return orderRepository.save(newOrder);
     }
 
     public List<Order> getAllOrders() {

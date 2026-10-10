@@ -2,6 +2,7 @@ package com.techie.order_service.controller;
 
 
 import com.techie.order_service.entity.Order;
+import com.techie.order_service.requestResponse.OrderRequest;
 import com.techie.order_service.serviceImpl.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class OrderController {
     // Create Order
     @PostMapping("/create")
     public ResponseEntity<Order> createOrder(
-            @RequestBody Order order) {
+            @RequestBody OrderRequest order) {
 
         Order savedOrder = orderService.createOrder(order);
 
